@@ -223,3 +223,32 @@ void menu_eksekusi_alokasi(void) {
     printf("------------------------------------------------------------\n");
     cari_dan_alokasi_darah();
 }
+
+// Menampilkan seluruh isi antrean pasien dan stok darah untuk membuktikan bahwa struktur Max-Heap dan Min-Heap berjalan dengan benar
+void menu_tampilkan_data(void) {
+    printf("============================================================\n");
+    printf("  ANTREAN PASIEN (Max-Heap) & STOK DARAH (Min-Heap)\n");
+    printf("============================================================\n");
+    
+    printf("\n  [ANTREAN PASIEN]\n");
+    if (size_pasien == 0) {
+        printf("  (Kosong)\n");
+    } else {
+        for (int i = 0; i < size_pasien; i++) {
+            printf("  %d. P%03d | %s | Gol: %s | Triage: %d | Darurat: %s\n",
+                   i + 1, heap_pasien[i].id, heap_pasien[i].nama, heap_pasien[i].gol_darah,
+                   heap_pasien[i].triage, heap_pasien[i].is_emergency ? "Ya" : "Tidak");
+        }
+    }
+
+    printf("\n  [STOK KANTONG DARAH]\n");
+    if (size_darah == 0) {
+        printf("  (Kosong)\n");
+    } else {
+        for (int i = 0; i < size_darah; i++) {
+            printf("  %d. D%03d | Gol: %s | Sisa: %d hari\n",
+                   i + 1, heap_darah[i].id, heap_darah[i].gol_darah, heap_darah[i].sisa_hari);
+        }
+    }
+    printf("============================================================\n");
+}
