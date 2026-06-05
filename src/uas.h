@@ -58,5 +58,7 @@
   void menu_input_pasien(void);
   void menu_input_darah(void);
   void menu_eksekusi_alokasi(void);
-   void menu_tampilkan_data(void);
+  void menu_tampilkan_data(void);
+  void menu_tampilkan_riwayat(void);
+   
  #endif

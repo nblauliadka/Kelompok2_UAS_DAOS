@@ -252,3 +252,16 @@ void menu_tampilkan_data(void) {
     }
     printf("============================================================\n");
 }
+
+void menu_tampilkan_riwayat(void) {
+    printf("============================================================\n");
+    printf("  RIWAYAT TRANSAKSI\n");
+    printf("============================================================\n");
+    if (jumlah_riwayat == 0) {
+        printf("  (Belum ada transaksi)\n");
+    } else {
+        for (int i = 0; i < jumlah_riwayat; i++) {
+            printf("  #%03d | Pasien: %s -> Darah: D%03d\n", riwayat[i].nomor, riwayat[i].pasien.nama, riwayat[i].darah.id);
+        }
+    }
+}
