@@ -57,4 +57,5 @@
  //  PROTOTIPE FUNGSI MENU CLI
   void menu_input_pasien(void);
   void menu_input_darah(void);
+  void menu_eksekusi_alokasi(void);
  #endif

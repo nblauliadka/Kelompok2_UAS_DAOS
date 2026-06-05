@@ -218,3 +218,8 @@ void menu_input_darah(void) {
     printf("  [OK] Kantong Darah berhasil ditambahkan.\n");
 }
 
+void menu_eksekusi_alokasi(void) {
+    printf("  EKSEKUSI ALOKASI DARAH\n"); 
+    printf("------------------------------------------------------------\n");
+    cari_dan_alokasi_darah();
+}
