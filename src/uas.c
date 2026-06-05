@@ -93,3 +93,12 @@ Pasien dequeue_pasien(void) {
     if (size_pasien > 0) heapify_down_pasien(0);
     return hasil;
 }
+
+//  FUNGSI MIN-HEAP DARAH
+
+// Menukar posisi dua kantong darah di dalam array heap
+void swap_darah(int i, int j) {
+    Darah tmp = heap_darah[i];
+    heap_darah[i] = heap_darah[j];
+    heap_darah[j] = tmp;
+}
