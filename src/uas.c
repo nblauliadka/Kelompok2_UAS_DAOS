@@ -66,3 +66,21 @@ void heapify_up_pasien(int idx) {
         } else break;
     }
 }
+
+// Menambah pasien ke antrean (Bypass langsung ke root jika Darurat)
+void enqueue_pasien(Pasien p) {
+    if (size_pasien >= MAX_PASIEN) {
+        printf("  [!] Antrean pasien penuh.\n");
+        return;
+    }
+    if (p.is_emergency) {
+        for (int i = size_pasien; i > 0; i--) heap_pasien[i] = heap_pasien[i - 1];
+        heap_pasien[0] = p;
+        size_pasien++;
+        heapify_down_pasien(0);
+    } else {
+        heap_pasien[size_pasien] = p;
+        size_pasien++;
+        heapify_up_pasien(size_pasien - 1);
+    }
+}
