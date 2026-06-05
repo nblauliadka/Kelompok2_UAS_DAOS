@@ -30,4 +30,16 @@
      char timestamp[32]; 
  } RiwayatTransaksi;
 
+ //  DEKLARASI VARIABEL GLOBAL
+ extern Pasien heap_pasien[MAX_PASIEN];
+ extern int size_pasien;
+ extern int id_pasien_counter;
+ 
+ extern Darah heap_darah[MAX_DARAH];
+ extern int size_darah;
+ extern int id_darah_counter;
+ 
+ extern RiwayatTransaksi riwayat[MAX_RIWAYAT];
+ extern int jumlah_riwayat;
+
  #endif
