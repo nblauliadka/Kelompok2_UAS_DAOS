@@ -40,3 +40,11 @@ int validasi_gol_darah(const char* gol) {
     return (strcmp(gol, "A")  == 0 || strcmp(gol, "B")  == 0 ||
             strcmp(gol, "AB") == 0 || strcmp(gol, "O")  == 0);
 }
+
+// Menentukan pasien mana yang lebih prioritas (Triage terkecil atau Darurat)
+int prioritas_pasien_lebih_tinggi(int a, int b) {
+    if (heap_pasien[a].triage != heap_pasien[b].triage) {
+        return heap_pasien[a].triage < heap_pasien[b].triage;
+    }
+    return heap_pasien[a].is_emergency > heap_pasien[b].is_emergency;
+}
