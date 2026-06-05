@@ -13,3 +13,15 @@ int id_darah_counter = 1;
 
 RiwayatTransaksi riwayat[MAX_RIWAYAT];
 int jumlah_riwayat = 0;
+
+// Mengubah angka triage menjadi label string deskriptif
+const char* label_triage(int triage) {
+    switch (triage) {
+        case 1: return "KRITIS EKSTREM";
+        case 2: return "KRITIS";
+        case 3: return "MENDESAK";
+        case 4: return "KURANG MENDESAK";
+        case 5: return "TIDAK MENDESAK";
+        default: return "TIDAK DIKETAHUI";
+    }
+}
