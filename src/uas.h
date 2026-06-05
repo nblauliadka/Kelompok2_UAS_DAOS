@@ -54,4 +54,6 @@
  Darah dequeue_darah_by_index(int idx);
  int cari_dan_alokasi_darah(void);
 
+ //  PROTOTIPE FUNGSI MENU CLI
+  void menu_input_pasien(void);
  #endif

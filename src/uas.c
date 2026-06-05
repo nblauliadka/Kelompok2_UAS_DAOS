@@ -197,3 +197,15 @@ int cari_dan_alokasi_darah(void) {
     printf("  [SUKSES] Kantong D%03d dialokasikan ke Pasien P%03d.\n", darah_terpilih.id, pasien_terpilih.id);
     return 1;
 }
+
+//  FUNGSI MENU CLI
+
+void menu_input_pasien(void) {
+    Pasien p; p.id = id_pasien_counter++;
+    printf("  Nama pasien       : "); scanf(" %63[^\n]", p.nama);
+    do { printf("  Golongan darah    : "); scanf("%3s", p.gol_darah); } while (!validasi_gol_darah(p.gol_darah));
+    do { printf("  Triage (1-5)      : "); scanf("%d", &p.triage); } while (p.triage < 1 || p.triage > 5);
+    printf("  Darurat? (1/0)    : "); scanf("%d", &p.is_emergency);
+    enqueue_pasien(p);
+    printf("  [OK] Pasien berhasil ditambahkan.\n");
+}
