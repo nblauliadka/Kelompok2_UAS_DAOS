@@ -50,5 +50,7 @@
  //  PROTOTIPE FUNGSI HEAP & ALGORITMA
  void enqueue_pasien(Pasien p);
  Pasien dequeue_pasien(void);
+ void enqueue_darah(Darah d);
+ Darah dequeue_darah_by_index(int idx);
  
  #endif

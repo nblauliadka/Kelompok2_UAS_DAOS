@@ -102,3 +102,25 @@ void swap_darah(int i, int j) {
     heap_darah[i] = heap_darah[j];
     heap_darah[j] = tmp;
 }
+
+// Memperbaiki struktur Min-Heap dari bawah ke atas saat enqueue
+void heapify_up_darah(int idx) {
+    while (idx > 0) {
+        int parent = (idx - 1) / 2;
+        if (heap_darah[idx].sisa_hari < heap_darah[parent].sisa_hari) {
+            swap_darah(idx, parent);
+            idx = parent;
+        } else break;
+    }
+}
+
+// Memperbaiki struktur Min-Heap dari atas ke bawah saat dequeue
+void heapify_down_darah(int idx) {
+    int terkecil = idx, kiri = 2 * idx + 1, kanan = 2 * idx + 2;
+    if (kiri < size_darah && heap_darah[kiri].sisa_hari < heap_darah[terkecil].sisa_hari) terkecil = kiri;
+    if (kanan < size_darah && heap_darah[kanan].sisa_hari < heap_darah[terkecil].sisa_hari) terkecil = kanan;
+    if (terkecil != idx) {
+        swap_darah(idx, terkecil);
+        heapify_down_darah(terkecil);
+    }
+}
