@@ -124,3 +124,26 @@ void heapify_down_darah(int idx) {
         heapify_down_darah(terkecil);
     }
 }
+
+/ Menambah kantong darah baru ke stok Min-Heap
+void enqueue_darah(Darah d) {
+    if (size_darah >= MAX_DARAH) {
+        printf("  [!] Stok darah penuh.\n");
+        return;
+    }
+    heap_darah[size_darah] = d;
+    size_darah++;
+    heapify_up_darah(size_darah - 1);
+}
+
+// Mengambil kantong darah terpilih (berdasarkan indeks hasil Greedy)
+Darah dequeue_darah_by_index(int idx) {
+    Darah hasil = heap_darah[idx];
+    heap_darah[idx] = heap_darah[size_darah - 1];
+    size_darah--;
+    if (idx < size_darah) {
+        heapify_up_darah(idx);
+        heapify_down_darah(idx);
+    }
+    return hasil;
+}
