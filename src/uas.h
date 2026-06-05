@@ -52,5 +52,6 @@
  Pasien dequeue_pasien(void);
  void enqueue_darah(Darah d);
  Darah dequeue_darah_by_index(int idx);
- 
+ int cari_dan_alokasi_darah(void);
+
  #endif

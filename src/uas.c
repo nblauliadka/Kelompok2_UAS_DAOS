@@ -147,3 +147,53 @@ Darah dequeue_darah_by_index(int idx) {
     }
     return hasil;
 }
+
+//  ALGORITMA INTI: LINEAR SEARCH DAN GREEDY
+
+// Mengeksekusi alokasi: Peek Max-Heap -> Linear Search -> Greedy -> Dequeue
+int cari_dan_alokasi_darah(void) {
+    if (size_pasien == 0 || size_darah == 0) {
+        printf("  [!] Antrean pasien atau stok darah kosong.\n");
+        return 0;
+    }
+
+    Pasien* p = &heap_pasien[0];
+    printf("\n  Pasien Prioritas Tertinggi: %s (Gol: %s)\n", p->nama, p->gol_darah);
+    printf("------------------------------------------------------------\n");
+
+    int idx_terpilih = -1, sisa_min = __INT_MAX__, jumlah_kompatibel = 0;
+    
+    // Linear Search untuk mencari seluruh darah yang kompatibel
+    for (int i = 0; i < size_darah; i++) {
+        if (is_kompatibel(p->gol_darah, heap_darah[i].gol_darah)) {
+            jumlah_kompatibel++;
+            
+            // Greedy: Pilih sisa hari yang paling kecil
+            if (heap_darah[i].sisa_hari < sisa_min) {
+                sisa_min = heap_darah[i].sisa_hari;
+                idx_terpilih = i;
+            }
+        }
+    }
+
+    if (idx_terpilih == -1) {
+        printf("  [GAGAL] Tidak ada darah kompatibel.\n");
+        return 0;
+    }
+
+    Pasien pasien_terpilih = dequeue_pasien();
+    Darah darah_terpilih = dequeue_darah_by_index(idx_terpilih);
+
+    // Pencatatan ke array riwayat statis
+    if (jumlah_riwayat < MAX_RIWAYAT) {
+        RiwayatTransaksi* r = &riwayat[jumlah_riwayat];
+        r->nomor = jumlah_riwayat + 1;
+        r->pasien = pasien_terpilih;
+        r->darah = darah_terpilih;
+        snprintf(r->timestamp, sizeof(r->timestamp), "Transaksi #%03d", r->nomor);
+        jumlah_riwayat++;
+    }
+
+    printf("  [SUKSES] Kantong D%03d dialokasikan ke Pasien P%03d.\n", darah_terpilih.id, pasien_terpilih.id);
+    return 1;
+}
