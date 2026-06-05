@@ -42,4 +42,5 @@
  extern RiwayatTransaksi riwayat[MAX_RIWAYAT];
  extern int jumlah_riwayat;
 
+ 
  #endif
