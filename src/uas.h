@@ -42,5 +42,9 @@
  extern RiwayatTransaksi riwayat[MAX_RIWAYAT];
  extern int jumlah_riwayat;
 
- 
+ //  PROTOTIPE FUNGSI UTILITAS
+ const char* label_triage(int triage);
+ int is_kompatibel(const char* gol_pasien, const char* gol_darah);
+ int validasi_gol_darah(const char* gol);
+
  #endif
