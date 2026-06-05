@@ -209,3 +209,12 @@ void menu_input_pasien(void) {
     enqueue_pasien(p);
     printf("  [OK] Pasien berhasil ditambahkan.\n");
 }
+
+void menu_input_darah(void) {
+    Darah d; d.id = id_darah_counter++;
+    do { printf("  Golongan darah    : "); scanf("%3s", d.gol_darah); } while (!validasi_gol_darah(d.gol_darah));
+    do { printf("  Sisa hari (1-365) : "); scanf("%d", &d.sisa_hari); } while (d.sisa_hari < 1 || d.sisa_hari > 365);
+    enqueue_darah(d);
+    printf("  [OK] Kantong Darah berhasil ditambahkan.\n");
+}
+
