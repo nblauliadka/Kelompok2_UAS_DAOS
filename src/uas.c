@@ -48,3 +48,21 @@ int prioritas_pasien_lebih_tinggi(int a, int b) {
     }
     return heap_pasien[a].is_emergency > heap_pasien[b].is_emergency;
 }
+
+// Menukar posisi dua pasien di dalam array heap
+void swap_pasien(int i, int j) {
+    Pasien tmp = heap_pasien[i];
+    heap_pasien[i] = heap_pasien[j];
+    heap_pasien[j] = tmp;
+}
+
+// Memperbaiki struktur Max-Heap dari bawah ke atas saat enqueue
+void heapify_up_pasien(int idx) {
+    while (idx > 0) {
+        int parent = (idx - 1) / 2;
+        if (prioritas_pasien_lebih_tinggi(idx, parent)) {
+            swap_pasien(idx, parent);
+            idx = parent;
+        } else break;
+    }
+}
