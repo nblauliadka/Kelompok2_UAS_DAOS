@@ -47,4 +47,8 @@
  int is_kompatibel(const char* gol_pasien, const char* gol_darah);
  int validasi_gol_darah(const char* gol);
 
+ //  PROTOTIPE FUNGSI HEAP & ALGORITMA
+ void enqueue_pasien(Pasien p);
+ Pasien dequeue_pasien(void);
+ 
  #endif

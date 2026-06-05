@@ -84,3 +84,12 @@ void enqueue_pasien(Pasien p) {
         heapify_up_pasien(size_pasien - 1);
     }
 }
+
+// Mengambil pasien paling kritis (root) dari Max-Heap
+Pasien dequeue_pasien(void) {
+    Pasien hasil = heap_pasien[0];
+    heap_pasien[0] = heap_pasien[size_pasien - 1];
+    size_pasien--;
+    if (size_pasien > 0) heapify_down_pasien(0);
+    return hasil;
+}
